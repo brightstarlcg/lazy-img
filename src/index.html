@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title></title>
+    <meta charset="UTF-8">
+    <style>
+   img{
+     width: 500px;
+   }
+    </style>
+  </head>
+  <body>
+   <ul>
+	<li><img src="../img/default.jpg" data="../img/1.jpg" alt=""></li>
+	<li><img src="../img/default.JPG" data="../img/2.jpg" alt=""></li>
+	<li><img src="../img/default.JPG" data="../img/3.jpg" alt=""></li>
+	<li><img src="../img/default.JPG" data="../img/4.jpg" alt=""></li>
+	<li><img src="../img/default.JPG" data="../img/5.jpg" alt=""></li>
+	<li><img src="../img/default.JPG" data="../img/6.jpg" alt=""></li>
+	<li><img src="../img/default.JPG" data="../img/7.jpg" alt=""></li>
+	<li><img src="../img/default.JPG" data="../img/8.jpg" alt=""></li>
+</ul>
+
+
+  </body>
+ 
+  <script>
+  let imgs =  document.querySelectorAll('img')
+// 窗口可视区高度
+let clientHeight = window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight;
+// img 距离窗口可视区顶部的距离 imgs[i].getBoundingClientRect().top
+function lazyLoadImg () {
+    for (let i = 0; i < imgs.length; i ++) {
+        if((imgs[i].getBoundingClientRect().top + imgs[i].height)>=0&&imgs[i].getBoundingClientRect().top < clientHeight ){
+            imgs[i].src = imgs[i].getAttribute('data')
+        }
+    }      
+}
+window.addEventListener('scroll', lazyLoadImg);
+  
+  </script>
+</html>
